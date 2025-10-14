@@ -1,0 +1,41 @@
+# GitHub Pages Configuration for BPVA Calendar App Documentation
+title: BPVA Calendar App
+description: Official documentation for the Buckeye Pole Vault Academy Calendar Application
+theme: jekyll-theme-cayman
+baseurl: ""
+url: "https://runnx.github.io/bpva_calendar_docs"
+
+# Social media and app store links
+github_username: RunnX
+repository: RunnX/bpva_calendar_docs
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Getting Started
+    url: /getting-started
+  - title: Features
+    url: /features
+  - title: Support
+    url: /support
+  - title: Privacy Policy
+    url: /privacy
+  - title: Terms of Service
+    url: /terms
+
+# SEO and metadata
+lang: en-US
+author: Buckeye Pole Vault Academy
+
+# Enable plugins that are supported by GitHub Pages
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude files from the build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
