@@ -14,9 +14,18 @@ Visit the live documentation site at: [https://runnx.github.io/bpva_calendar_doc
 
 - **Getting Started Guide** - Step-by-step setup instructions for new users
 - **Features Overview** - Comprehensive list of app capabilities
+- **Manual Account Linking** - How the app links Apple and Google accounts
 - **Support & FAQ** - Common questions and troubleshooting help
 - **Privacy Policy** - How we handle user data
 - **Terms of Service** - Usage terms and conditions
+
+## 🔐 Authentication Features
+
+The BPVA Calendar App supports both Google and Apple Sign-In:
+- **Google Sign-In** - Required for Google Calendar API integration
+- **Apple Sign-In** - App Store requirement, supports "Hide My Email"
+- **Manual Account Linking** - Links Apple and Google accounts via Firestore (emails don't need to match)
+- **Flexible Authentication** - Sign in with either provider once accounts are linked
 
 ## 🛠️ Technical Details
 
