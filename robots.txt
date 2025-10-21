@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://runnx.github.io/bpva_calendar_docs/sitemap.xml
