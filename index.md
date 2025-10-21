@@ -125,8 +125,8 @@ You have complete control over your data. You can:
 Need help with the app?
 
 - **FAQ & Troubleshooting**: [Support Page](support)
-- **Email Support**: [Contact BPVA](mailto:support@example.com)
-- **Report Issues**: Found a bug? [Contact us](mailto:support@example.com)
+- **Email Support**: [Contact BPVA](mailto:austin.bpva@gmail.com)
+- **Report Issues**: Found a bug? [Contact us](mailto:austin.bpva@gmail.com)
 
 ---
 
@@ -143,6 +143,7 @@ The Buckeye Pole Vault Academy is central Ohio's premier pole vault training fac
 This app is developed and maintained by **RunnX** for Buckeye Pole Vault Academy.
 
 - **Privacy Policy**: [View our Privacy Policy](privacy-policy) - Learn how we protect your data
+- **Mobile App Privacy Policy**: [View Mobile Privacy Policy](mobile-app-privacy-policy) - App-specific privacy details
 - **Terms of Service**: [View Terms](terms) - Understand your rights and responsibilities
 - **Account Deletion**: [Delete Your Account](delete-account) - Remove your data at any time
 
@@ -156,6 +157,7 @@ This app is developed and maintained by **RunnX** for Buckeye Pole Vault Academy
 - [Getting Started Guide](getting-started)
 - [Support & FAQ](support)
 - [Privacy Policy](privacy-policy)
+- [Mobile Privacy Policy](mobile-app-privacy-Policy)
 - [Terms of Service](terms)
 - [Delete Account](delete-account)
 
