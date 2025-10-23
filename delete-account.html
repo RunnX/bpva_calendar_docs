@@ -94,12 +94,57 @@
         <h2>Buckeye Pole Vault Academy Calendar App</h2>
 
         <div class="warning">
-            <p><strong>Important:</strong> Deleting your account is permanent and cannot be undone. Please review this information carefully before proceeding.</p>
+            <p><strong>Important:</strong> Deleting your account is permanent and cannot be undone. All your data will be immediately removed from our systems. Please review this information carefully before proceeding.</p>
         </div>
 
-        <h2>How to Request Account Deletion</h2>
+        <h2>Self-Service Account Deletion (Recommended)</h2>
         <div class="steps">
-            <p><strong>To delete your Buckeye Pole Vault Academy Calendar App account and associated data, follow these steps:</strong></p>
+            <p><strong>You can now delete your account directly from the app:</strong></p>
+            
+            <div class="step">
+                <strong>Step 1:</strong> Open the BPVA Calendar app and sign in to your account
+            </div>
+            
+            <div class="step">
+                <strong>Step 2:</strong> Navigate to your profile screen:
+                <ul style="margin-top: 5px;">
+                    <li><strong>Pending Users:</strong> Tap the menu icon (☰) → "Delete Account"</li>
+                    <li><strong>Athletes:</strong> Open "My Profile" screen → Scroll to bottom → "Account Management" section</li>
+                    <li><strong>Parents:</strong> Open "Parent Profile" screen → Scroll to bottom → "Account Management" section</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <strong>Step 3:</strong> Tap the "Delete Account" button (shown in red)
+            </div>
+            
+            <div class="step">
+                <strong>Step 4:</strong> Review the warning about what will be deleted
+            </div>
+            
+            <div class="step">
+                <strong>Step 5:</strong> Confirm by typing "DELETE" exactly (case-sensitive)
+            </div>
+            
+            <div class="step">
+                <strong>Step 6:</strong> Your account and all associated data are immediately deleted
+            </div>
+        </div>
+
+        <div class="highlight">
+            <h3>What Happens During Automated Deletion:</h3>
+            <ul>
+                <li>✅ <strong>Instant Processing:</strong> No waiting period - deletion happens immediately</li>
+                <li>✅ <strong>Complete Cleanup:</strong> All personal data removed from all systems</li>
+                <li>✅ <strong>Relationship Cleanup:</strong> Parent-athlete links automatically removed</li>
+                <li>✅ <strong>Emergency Contact Preservation:</strong> If you're a parent, your emergency contact info is preserved for linked athletes (only if they have no other parents)</li>
+                <li>✅ <strong>No Manual Intervention:</strong> Fully automated process</li>
+            </ul>
+        </div>
+
+        <h2>Alternative: Manual Deletion Request</h2>
+        <div class="steps">
+            <p><strong>If you cannot access the app, you can still request account deletion via email:</strong></p>
             
             <div class="step">
                 <strong>Step 1:</strong> Send an email to our support team using the contact information below
@@ -123,25 +168,41 @@
         </div>
 
         <div class="contact-info">
-            <h2>Contact Information for Deletion Requests</h2>
+            <h3>Contact Information for Manual Deletion Requests</h3>
             <p><strong>Email:</strong></p>
             <a href="mailto:austin.bpva@gmail.com?subject=Account%20Deletion%20Request%20-%20BPVA%20Calendar%20App" class="email-link">austin.bpva@gmail.com</a>
             
             <p><strong>Subject Line:</strong> Account Deletion Request - BPVA Calendar App</p>
             <p><strong>Phone:</strong> 614-581-6235</p>
             <p><strong>Address:</strong> 4480 Beard Road, Sunbury, OH 43074</p>
+            <p style="margin-top: 15px;"><em>Note: Using the in-app deletion feature is faster and does not require manual processing.</em></p>
         </div>
 
-        <h2>What Data Will Be Deleted</h2>
-        <p>When you request account deletion, the following data will be permanently removed:</p>
+        <h2>What Data Will Be Automatically Deleted</h2>
+        <p>When you delete your account (either via app or email request), the following data is permanently removed:</p>
         <ul>
-            <li><strong>User Profile Information:</strong> Name, email address, membership type (Admin/Parent/Athlete)</li>
-            <li><strong>App Preferences:</strong> Notification settings and app configuration</li>
-            <li><strong>Authentication Data:</strong> OAuth tokens and session information</li>
-            <li><strong>Gym Check-in Records:</strong> Location-based check-in history</li>
-            <li><strong>Message History:</strong> Push notifications and app messages sent to your account</li>
-            <li><strong>Device Registration:</strong> Firebase messaging tokens and device identifiers</li>
+            <li><strong>User Profile Information:</strong> Name, email address, photo, membership type</li>
+            <li><strong>User Membership Data:</strong> Membership status, expiration dates, notes</li>
+            <li><strong>Parent-Athlete Relationships:</strong> All links between parent and athlete accounts (with emergency contact preservation when needed)</li>
+            <li><strong>Emergency Contact Information:</strong> Your emergency contact details (preserved for athletes only when you're their only parent)</li>
+            <li><strong>Authentication Data:</strong> OAuth tokens, session information, Firebase Auth account</li>
+            <li><strong>Gym Check-in Records:</strong> All your location-based check-in history</li>
+            <li><strong>Runway Step Configurations:</strong> Pole vault approach run measurements (athletes only)</li>
+            <li><strong>Message History:</strong> Push notification preferences, dismissed messages, read status</li>
+            <li><strong>Device Registration:</strong> Firebase Cloud Messaging (FCM) tokens</li>
+            <li><strong>Admin Settings:</strong> Calendar selections and admin configurations (if applicable)</li>
         </ul>
+
+        <div class="highlight">
+            <h3>Smart Emergency Contact Handling:</h3>
+            <p>If you're a parent being deleted:</p>
+            <ul>
+                <li>Your linked athletes are automatically unlinked from your account</li>
+                <li>If an athlete has OTHER parents, they retain those connections</li>
+                <li>If an athlete has NO OTHER parents, your emergency contact information is copied to their profile as their direct emergency contact</li>
+                <li>This ensures athletes always have emergency contact information available</li>
+            </ul>
+        </div>
 
         <h2>What Data Will Be Retained</h2>
         <p>The following data may be retained for legitimate business purposes:</p>
@@ -153,8 +214,9 @@
 
         <h2>Data Retention Period</h2>
         <ul>
-            <li><strong>Immediate Deletion:</strong> Personal account data is deleted within 7 business days</li>
-            <li><strong>System Backups:</strong> Data may persist in system backups for up to 30 days</li>
+            <li><strong>Immediate Deletion (Self-Service):</strong> Personal account data is deleted instantly when using in-app deletion</li>
+            <li><strong>Manual Request Deletion:</strong> Data deleted within 7 business days when requested via email</li>
+            <li><strong>System Backups:</strong> Data may persist in automated system backups for up to 30 days</li>
             <li><strong>Legal Requirements:</strong> Some data may be retained longer if required by law</li>
         </ul>
 
@@ -169,20 +231,34 @@
         </div>
 
         <h2>Processing Timeline</h2>
+        
+        <h3>Self-Service Deletion (In-App):</h3>
+        <ol>
+            <li><strong>Instant Processing:</strong> Account deletion begins immediately after confirmation</li>
+            <li><strong>Automated Cleanup:</strong> All data removed from Firestore, Firebase Auth, and related systems (takes seconds)</li>
+            <li><strong>Immediate Logout:</strong> You are automatically signed out and redirected to the sign-in screen</li>
+            <li><strong>No Reversal:</strong> Once completed, deletion cannot be undone</li>
+        </ol>
+
+        <h3>Manual Deletion Request (Email):</h3>
         <ol>
             <li><strong>Request Received:</strong> We acknowledge your request within 2 business days</li>
             <li><strong>Identity Verification:</strong> We verify your account ownership (1-3 business days)</li>
             <li><strong>Data Deletion:</strong> Your data is permanently deleted (1-2 business days)</li>
-            <li><strong>Confirmation:</strong> You receive confirmation that deletion is complete</li>
+            <li><strong>Confirmation:</strong> You receive email confirmation that deletion is complete</li>
         </ol>
 
         <div class="warning">
             <h2>Important Notes</h2>
             <ul>
-                <li>Account deletion cannot be reversed</li>
-                <li>You will lose access to all app features and training schedules</li>
-                <li>To use the app again, you would need to sign up as a new user</li>
-                <li>Academy staff will be notified of your account deletion for membership management purposes</li>
+                <li>✅ <strong>Self-service deletion is available directly in the app</strong> - no need to contact support</li>
+                <li>⚠️ Account deletion cannot be reversed once completed</li>
+                <li>📱 You will lose access to all app features and training schedules</li>
+                <li>🔄 To use the app again, you would need to sign up as a new user</li>
+                <li>👨‍👩‍👧 If you're a parent, your athletes will be automatically unlinked</li>
+                <li>🚨 Emergency contacts are preserved for athletes when needed (single parent scenario)</li>
+                <li>🏫 Academy staff will be notified of your account deletion for membership management purposes</li>
+                <li>⏱️ In-app deletion is instant; email requests take up to 7 business days</li>
             </ul>
         </div>
 
