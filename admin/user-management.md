@@ -1,3 +1,9 @@
+---
+layout: default
+title: User Management
+description: Manage user roles, memberships, and account details
+---
+
 # User Management
 
 ## Overview

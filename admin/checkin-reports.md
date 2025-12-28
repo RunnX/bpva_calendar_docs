@@ -1,153 +1,76 @@
-# Gym Check-In Aggregates System
+---
+layout: default
+title: Check-In Reports
+description: View detailed attendance and check-in analytics
+---
+
+# Gym Check-In Reports & Analytics
 
 ## Overview
 
-The gym check-in aggregates system improves query performance by archiving old individual check-in records into daily summary records. This allows the dashboard to efficiently display statistics even with thousands of historical check-ins.
+The gym check-in reporting system provides detailed attendance analytics and historical tracking. The system archives older check-in data to maintain performance while keeping complete historical records accessible.
 
-## Architecture
+**Key Benefits:**
+- Fast dashboard performance even with thousands of check-ins
+- Complete historical data preserved
+- Daily, weekly, and monthly statistics
+- Individual athlete attendance tracking
+- Lifetime check-in counts
 
-### Collections
+## How the System Works
 
-1. **`gym_checkins`** - Individual check-in records (current/recent data)
-2. **`gym_checkin_aggregates`** - Daily aggregate snapshots (archived data)
+**Two Types of Data Storage:**
 
-### Data Flow
+1. **Recent Check-Ins** (Last 30-90 days)
+   - Detailed individual check-in records
+   - Used for recent activity and athlete tracking
+   - Faster queries for current statistics
 
-```
-New check-in → gym_checkins collection
-              ↓
-         (time passes)
-              ↓
-    Archive process triggered
-              ↓
-    Old check-ins grouped by date
-              ↓
-    Daily aggregates created in gym_checkin_aggregates
-              ↓
-    (Optional) Individual check-ins deleted
-              ↓
-    Dashboard queries both collections and combines stats
-```
-
-## Models
-
-### GymCheckInAggregate
-
-Located: `lib/models/gym_checkin_aggregate.dart`
-
-```dart
-class GymCheckInAggregate {
-  final DateTime date;                    // Date this aggregate represents (YYYY-MM-DD)
-  final DateTime snapshotCreatedAt;       // When this snapshot was created
-  final int checkInCount;                 // Total check-ins for this date
-  final int uniqueUserCount;              // Unique users who checked in
-  final List<String> userIds;             // List of user IDs (Firebase UIDs)
-  final List<String>? userEmails;         // Optional user emails for reference
-}
-```
-
-**Document ID Format**: `YYYY-MM-DD` (e.g., `2025-12-24`)
-
-This makes querying by date range simple and efficient.
-
-## Services
-
-### LocationService Methods
-
-#### archiveGymCheckIns()
-
-Archives old check-ins into daily aggregate records.
-
-```dart
-static Future<Map<String, dynamic>> archiveGymCheckIns({
-  required DateTime cutoffDate,
-  bool deleteAfterArchive = false,
-}) async
-```
-
-**Parameters:**
-- `cutoffDate`: Archive all check-ins before this date (exclusive)
-- `deleteAfterArchive`: If true, deletes individual check-ins after aggregating (recommended to save storage)
-
-**Returns:**
-```dart
-{
-  'success': true/false,
-  'message': 'Archive completed successfully',
-  'checkInsProcessed': 150,
-  'aggregatesCreated': 30,
-  'checkInsDeleted': 150,  // Only if deleteAfterArchive = true
-  'dateRange': {
-    'oldest': '2025-01-01',
-    'newest': '2025-11-24'
-  }
-}
-```
-
-**Process:**
-1. Queries all check-ins before cutoff date
-2. Groups check-ins by date
-3. Creates aggregate record for each date with:
-   - Total check-in count
-   - Unique user count
-   - List of user IDs
-   - List of user emails (optional)
-4. Optionally deletes original check-in records
-5. Uses batched writes (500 operations per batch) for performance
-
-#### getAggregates()
-
-Retrieves aggregate records for a date range.
-
-```dart
-static Future<List<GymCheckInAggregate>> getAggregates({
-  DateTime? startDate,
-  DateTime? endDate,
-}) async
-```
+2. **Archived Summaries** (Older than 90 days)
+   - Daily summary records for historical periods
+   - Preserves statistics without storing every individual check-in
+   - Saves storage space while keeping historical data
+   - Combined with recent data for complete totals
 
 **Example:**
-```dart
-// Get aggregates for the last 30 days
-final aggregates = await LocationService.getAggregates(
-  startDate: DateTime.now().subtract(Duration(days: 30)),
-  endDate: DateTime.now(),
-);
-```
+- **Recent**: Individual check-ins from last 60 days (detailed records)
+- **Archived**: Daily totals from months/years ago (summary only)
+- **Dashboard**: Combines both for accurate statistics
 
-#### getGymCheckInStats() - Updated
+## Viewing Check-In Reports
 
-Now combines current check-ins with archived aggregates.
+### Accessing Reports
 
-**Logic:**
-1. Get all current (non-archived) check-ins
-2. Count today's check-ins from current data
-3. Get aggregates for week/month date ranges
-4. Combine current + aggregate counts for accurate totals
-5. Aggregate unique users across all sources
+**From Admin Dashboard:**
+1. Navigate to **Admin Dashboard**
+2. Tap **"Gym Check-In Statistics"** or **"Check-In Reports"**
+3. View current statistics and analytics
 
-**Returns:**
-```dart
-{
-  'todayCheckIns': 15,      // Today only (from gym_checkins)
-  'weekCheckIns': 85,       // Current + aggregates for this week
-  'monthCheckIns': 350,     // Current + aggregates for this month
-  'totalCheckIns': 2450,    // All current + all aggregates
-  'uniqueUsers': 125,       // Unique across all data
-}
-```
+**From User Management:**
+1. Navigate to **Admin Dashboard** → **User Management**
+2. Find **"Gym Check-In Statistics"** section
+3. View reports and archive options
 
-## Admin UI
+### Statistics Available
 
-### Archive Dialog
+**Dashboard Quick Stats:**
+- **Today**: Number of check-ins so far today
+- **This Week**: Check-ins from Monday through today
+- **This Month**: Check-ins from 1st of month through today
+- **Total**: All-time check-ins (recent + archived)
+- **Unique Users**: Count of different athletes who have checked in
 
-Located in: `lib/screens/admin/user_management_screen.dart`
+**Individual Athlete Stats:**
+- Total lifetime check-ins for each athlete
+- Last check-in date and time
+- Check-in frequency (average per week/month)
+- Attendance trends
 
-Accessible from: User Management screen → "Archive Old Check-Ins" button (next to Gym Check-In Statistics title)
-
-**Features:**
-- Date picker to select cutoff date
-- Checkbox to delete individual records after archiving
+**Date Range Reports:**
+- Select custom date ranges
+- View check-ins for specific periods
+- Compare time periods
+- Export data for analysis
 - Real-time progress indicator
 - Detailed results showing:
   - Check-ins processed

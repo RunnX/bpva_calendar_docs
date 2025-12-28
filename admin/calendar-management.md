@@ -1,3 +1,9 @@
+---
+layout: default
+title: Calendar Management
+description: Configure Google Calendars and manage calendar access for BPVA users
+---
+
 # Calendar Management
 
 ## Overview

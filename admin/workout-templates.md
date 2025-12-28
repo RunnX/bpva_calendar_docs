@@ -1,153 +1,107 @@
+---
+layout: default
+title: Workout Templates
+description: Create and manage pole vault workout templates for athletes
+---
+
 # Workout Templates & Athlete Logging System
 
 ## Overview
 
 The BPVA Calendar App now includes a comprehensive workout template and logging system specifically designed for pole vault training. This system allows coaches/admins to create detailed workout templates, and athletes to log their actual performance against those templates.
 
-## Architecture
+## How Workouts Work
 
-### Two-Tier System
+**Two-Part System:**
 
-1. **Workout Templates** (`workout_templates` collection) - Created by coaches/admins
-   - Reusable workout plans
-   - Include all prescribed exercises, sets, reps, pole vault-specific parameters
+1. **Workout Templates** (Created by Coaches)
+   - Reusable workout plans you create as an admin/coach
+   - Include all prescribed exercises, sets, reps, and pole vault parameters
    - Can be assigned to all athletes or specific groups
+   - Athletes use these as a guide for their training
    
-2. **Workout Logs** (`workout_logs` collection) - Created by athletes
+2. **Workout Logs** (Completed by Athletes)
    - Individual athlete's record of what they actually did
-   - Based on a template but tracks actual performance
-   - Includes athlete notes, RPE, coach feedback
+   - Based on your template but tracks their actual performance
+   - Includes athlete notes, difficulty ratings, and your feedback
+   - Helps you monitor athlete progress and compliance
 
-## Data Models
+## Workout Template Structure
 
-### Workout Template Structure
+**Template Information:**
+- **Name**: Descriptive workout title (e.g., "Takeoff Mechanics Day")
+- **Goal**: What this workout aims to improve (optional)
+- **Difficulty**: Beginner, Intermediate, or Advanced
+- **Duration**: Estimated time in minutes
+- **Equipment Needed**: List of required equipment
+- **Visibility**: Who can see this template (all athletes, specific athletes, coaches only)
 
-```dart
-WorkoutTemplate {
-  id: String
-  name: String
-  goal: String?                    // e.g., "Improve takeoff mechanics"
-  difficulty: WorkoutDifficulty    // beginner, intermediate, advanced
-  durationMinutes: int?
-  equipment: List<String>           // e.g., ["poles", "hurdles", "bands"]
-  segments: List<WorkoutSegment>
-  visibility: String                // "all-athletes", "assigned-athletes", "coaches-only"
-  createdBy: String                 // userId of coach
-  createdAt: DateTime
-  updatedAt: DateTime?
-  version: int
-}
-```
+**Workout Segments:**
 
-### Workout Segment
+Each workout is divided into segments by type:
+- **Warmup**: Links to warmup drill sequences
+- **Technique**: Pole vault technical drills
+- **Strength**: Weight room exercises
+- **Vaulting**: Full approach vaults
+- **Conditioning**: Cardio and endurance work
+- **Cooldown**: Stretching and recovery
 
-```dart
-WorkoutSegment {
-  type: SegmentType                 // warmup, technique, strength, vaulting, conditioning, cooldown
-  warmupDrillGroupId: String?       // Reference to warmup_drills collection
-  exercises: List<ExerciseTemplate>
-  notes: String?
-}
-```
+**Exercise Details:**
 
-### Exercise Template
+For each exercise in a segment, you can specify:
 
-```dart
-ExerciseTemplate {
-  name: String
-  description: String?
-  instructions: String?
-  videoUrl: String?
-  imageUrl: String?
-  
-  // Standard exercise parameters
-  sets: int?
-  reps: int?
-  duration: String?                 // e.g., "10 minutes", "30 seconds"
-  restSeconds: int?
-  intensity: String?                // e.g., "70% max", "moderate", "RPE 7"
-  tempo: String?                    // e.g., "slow eccentric", "explosive"
-  
-  // Pole vault specific fields
-  gripHeight: String?               // e.g., "12'0\"", "3.65m"
-  poleUsed: String?                 // e.g., "14' 155", "4.27m 75kg"
-  approachSteps: int?               // e.g., 3, 6, 8, 12
-  barHeight: String?                // e.g., "10'6\"", "no bar", "3.20m"
-  
-  // Weight/load tracking
-  weight: String?                   // e.g., "135 lbs", "60 kg", "bodyweight"
-  
-  // Notes for customization
-  scalingOptions: String?           // How to adjust for different levels
-  substitutions: String?            // Alternative exercises
-}
-```
+*Standard Parameters:*
+- Sets and reps
+- Duration (e.g., "10 minutes", "30 seconds")
+- Rest time between sets
+- Intensity (e.g., "70% max", "moderate", "RPE 7")
+- Tempo (e.g., "slow eccentric", "explosive")
+- Weight or load
 
-### Workout Log Structure
+*Pole Vault Specific:*
+- Grip height (e.g., "12'0\"", "3.65m")
+- Pole specification (e.g., "14' 155", "4.27m 75kg")
+- Approach steps (e.g., 3, 6, 8, 12 step approach)
+- Bar height (e.g., "10'6\"", "no bar", "3.20m")
 
-```dart
-WorkoutLog {
-  id: String
-  userId: String                    // Athlete who performed the workout
-  templateId: String                // Reference to workout template
-  templateName: String              // Cached for easier querying
-  scheduledDate: DateTime           // When it was supposed to be done
-  actualDate: DateTime?             // When it was actually completed
-  startTime: DateTime
-  endTime: DateTime?
-  segmentLogs: List<SegmentLog>
-  
-  // Overall feedback
-  overallRpe: int?                  // Overall difficulty rating (1-10)
-  overallNotes: String?             // General notes about the workout
-  coachFeedback: String?            // Coach can add feedback
-  coachFeedbackBy: String?          // userId of coach
-  coachFeedbackAt: DateTime?
-  
-  // Completion tracking
-  completed: bool
-  completionPercentage: int?        // Auto-calculated
-}
-```
+*Additional Info:*
+- Exercise instructions and description
+- Video demonstration links
+- Reference images
+- Scaling options for different skill levels
+- Substitute exercises
 
-### Exercise Log
+## Athlete Workout Logs
 
-```dart
-ExerciseLog {
-  exerciseName: String              // From template
-  completed: bool
-  
-  // Actual values recorded by athlete
-  actualSets: int?
-  actualReps: int?
-  actualDuration: String?
-  actualWeight: String?
-  actualIntensity: String?
-  
-  // Pole vault specific actual values
-  actualGripHeight: String?
-  actualPoleUsed: String?
-  actualApproachSteps: int?
-  actualBarHeight: String?
-  
-  // Performance metrics
-  rpe: int?                         // Rate of Perceived Exertion (1-10)
-  notes: String?                    // Athlete's notes
-  videoUrls: List<String>           // Athlete can upload videos
-}
-```
+**What Athletes Track:**
 
-## Firestore Collections
+When athletes complete your workout template, they log:
 
-### `workout_templates`
+*Actual Performance:*
+- Actual sets, reps, duration completed
+- Actual weights used
+- Actual pole, grip height, approach steps, bar height
+- Completion status for each exercise
 
-- **Created by**: Coaches/Admins
-- **Read access**: 
-  - All athletes (if visibility = "all-athletes")
-  - Assigned athletes (if visibility = "assigned-athletes")
-  - All coaches/admins
-- **Write access**: Creator coach/admin or any admin
-- **Document ID**: Auto-generated by Firestore
+*Subjective Feedback:*
+- RPE (Rate of Perceived Exertion) 1-10 scale for each exercise
+- Overall workout difficulty rating
+- Personal notes about how it felt
+- Video uploads of their vaulting (optional)
+
+*Completion Tracking:*
+- Start and end time
+- Which exercises were completed vs skipped
+- Overall completion percentage (auto-calculated)
+
+**Coach Feedback:**
+
+As an admin/coach, you can:
+- Review athlete's logged workout
+- See what they actually did vs what was prescribed
+- Add feedback and coaching notes
+- Monitor progress over time
+- Adjust future workouts based on performance
 
 ### `workout_logs`
 

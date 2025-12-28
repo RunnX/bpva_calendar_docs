@@ -1,3 +1,9 @@
+---
+layout: default
+title: Pole Checkout
+description: Track pole rentals for athletes competing at meets
+---
+
 # Pole Checkout for Indoor Meets
 
 ## Overview

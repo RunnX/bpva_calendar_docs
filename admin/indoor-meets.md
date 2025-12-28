@@ -1,3 +1,9 @@
+---
+layout: default
+title: Indoor Meet Management
+description: Manage indoor pole vault meets and athlete registrations
+---
+
 # Indoor Meet Management
 
 ## Overview

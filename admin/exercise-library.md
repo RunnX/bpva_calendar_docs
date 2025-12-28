@@ -1,3 +1,9 @@
+---
+layout: default
+title: Exercise Library
+description: Maintain a library of pole vault exercises and drills
+---
+
 # Exercise Library & Warmup Drills
 
 ## Overview

@@ -1,3 +1,9 @@
+---
+layout: default
+title: Pole Inventory
+description: Complete pole vault pole inventory and rental management system
+---
+
 # Pole Inventory Management System
 
 ## Overview
@@ -40,64 +46,52 @@ The Pole Inventory Management System is a comprehensive feature for tracking pol
 - **External Coach Access**: View pole inventory and checkout details (read-only)
 - **Real-Time Updates**: Firestore streams provide live inventory updates
 
-## Data Models
+## Pole Information
 
-### Pole
+Each pole in the inventory includes the following details:
 
-```dart
-class Pole {
-  final String id;
-  final String brand;           // e.g., "Pacer", "UCS", "Gill"
-  final double weight;          // Weight in pounds
-  final double length;          // Calculated from lengthFeet + lengthInches/12
-  final int lengthFeet;         // Length in feet (e.g., 13, 14, 15)
-  final int lengthInches;       // Additional inches (0-11)
-  final double? flex;           // Optional flex rating (e.g., 14.5, 15.0)
-  final DateTime? purchaseDate; // Optional purchase date
-  final String barcode;         // Unique identifier (e.g., POLE-1732204567890)
-  final PoleStatus status;      // Available, CheckedOut, Maintenance, Retired
-  final DateTime createdAt;
-  final String createdBy;       // Admin user ID
-}
+**Basic Information:**
+- **Brand**: Manufacturer (e.g., Pacer, UCS, Gill, Spirit)
+- **Weight**: Pole weight rating in pounds
+- **Length**: Pole length in feet and inches
+- **Flex**: Optional flex rating (e.g., 14.5, 15.0)
+- **Barcode**: Unique identifier for scanning and tracking
+- **Purchase Date**: When the pole was acquired (optional)
 
-enum PoleStatus {
-  available,
-  checkedOut,
-  maintenance,
-  retired,
-}
-```
+**Status Tracking:**
+- **Available**: Ready to use or checkout
+- **Checked Out**: Currently rented to an athlete
+- **Maintenance**: Needs repair or inspection
+- **Retired**: No longer in active inventory
 
-### PoleCheckout
+**QR Code Label:**
+Each pole has a printable QR code label that includes:
+- Pole brand and specifications
+- Unique barcode number
+- Scannable QR code for quick checkout/checkin
+- High error correction so code works even if partially damaged
 
-```dart
-class PoleCheckout {
-  final String id;
-  final String poleId;
-  final String athleteId;
-  final String athleteName;
-  final String athleteEmail;
-  final DateTime checkoutDate;
-  final DateTime? expectedReturnDate;
-  final DateTime? actualReturnDate;
-  final String checkedOutBy;    // Admin/receptionist user ID
-  final String? checkedInBy;    // Admin/receptionist user ID
-  final String? notes;
-  final CheckoutStatus status;  // Active, Returned, Overdue
-}
+## Pole Checkout Records
 
-enum CheckoutStatus {
-  active,
-  returned,
-  overdue,
-}
-```
+When a pole is checked out, the system tracks:
 
-## Firestore Collections
+**Checkout Information:**
+- Athlete name and email
+- Date and time checked out
+- Expected return date
+- Who processed the checkout (admin/receptionist)
+- Optional notes
 
-### `/poles/{poleId}`
+**Check-in Information:**
+- Actual return date
+- Who processed the check-in
+- Condition notes
+- Any maintenance needed
 
-Stores all pole inventory data.
+**Status Indicators:**
+- **Active**: Pole is currently checked out
+- **Returned**: Pole was returned on time
+- **Overdue**: Pole was not returned by expected date
 
 **Security Rules:**
 

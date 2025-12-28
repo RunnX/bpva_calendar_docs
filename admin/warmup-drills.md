@@ -1,3 +1,9 @@
+---
+layout: default
+title: Warmup Drills
+description: Create warmup routines with video demonstrations and action levels
+---
+
 # Warmup Drills & Action Level Media
 
 ## Overview

@@ -1,119 +1,85 @@
-# BPVA Calendar - Automated Daily Check-In Report
+---
+layout: default
+title: Automated Reporting
+description: Configure automated daily check-in reports via email
+---
 
-This feature provides automated daily email reports with PDF attachments summarizing gym check-ins for the previous day.
+# Automated Daily Check-In Reports
 
-## Features
+## Overview
 
-- **Configurable Recipients**: Admin can select multiple users to receive reports
-- **PDF Reports**: Professional PDF format with statistics and detailed check-in list
-- **Automated Delivery**: Reports sent automatically every day at 6 AM Eastern Time
-- **User-Friendly Configuration**: Easy-to-use admin interface for setup
+The Automated Daily Check-In Report feature sends professional email reports with PDF attachments summarizing gym check-ins from the previous day. Reports are automatically delivered every morning at 6 AM Eastern Time to selected admin and coach users.
 
-## Setup Instructions
+**What You'll Get:**
+- Daily email with PDF attachment
+- Check-in statistics (total check-ins, unique users, average distance)
+- Detailed check-in list with timestamps and athlete names
+- Professional formatting with BPVA branding
 
-### 1. Install Cloud Function Dependencies
+**Who Can Receive Reports:**
+- Administrators
+- Coaches
+- Receptionists
+- Any combination of staff members you select
 
-Navigate to the Cloud Functions directory and install the new packages:
+## Setting Up Automated Reports
 
-```bash
-cd fcm_listener_function
-npm install
-```
+### Step 1: Access Report Configuration
 
-This will install:
-- `nodemailer` - for sending emails
-- `pdfkit` - for generating PDF reports
-- `@types/pdfkit` - TypeScript definitions
+1. Open BPVA Calendar app as an admin
+2. Navigate to the menu → **Admin Dashboard**
+3. Tap **"Automated Reporting"** or **"Configuration"** → **"Automated Reporting"**
 
-### 2. Configure Email Credentials
+### Step 2: Configure Report Settings
 
-The Cloud Function needs SMTP credentials to send emails. Configure these using a `.env` file:
+**Enable Automated Reporting:**
+- Toggle **"Enable Automated Reports"** to ON
+- The system is now active and will send reports daily
 
-#### Step 1: Create the .env file
+**Select Report Types:**
+- Currently supports: **Daily Check-In Report**
+- Check the box to enable this report type
+- Future: Additional report types may be added
 
-```bash
-cd fcm_listener_function
-cp .env.example .env
-```
+**Set Schedule:**
+- **Time**: Choose when reports should be sent (default: 6:00 AM)
+- **Timezone**: Select your facility's timezone (default: America/New_York - Eastern)
+- Reports cover check-ins from the previous day
 
-#### Step 2: Edit the .env file
+**Add Recipients:**
+1. Tap **"Add Recipient"**
+2. Search for user by name or email
+3. Select user from list
+4. User appears in recipients list
+5. Repeat for each person who should receive reports
+6. You can add multiple recipients
 
-Open `.env` and fill in your SMTP credentials:
+**Remove Recipients:**
+- Tap the X next to any recipient's name to remove them
+- Changes take effect immediately
 
-**For Gmail (Recommended for Development):**
+### Step 3: Save Configuration
 
-```env
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your-email@gmail.com
-SMTP_PASSWORD=your-app-password
-```
+1. Review all settings
+2. Tap **"Save Configuration"**
+3. Confirmation message appears
+4. First report will be sent at the scheduled time
 
-**Note**: For Gmail, you need to create an App Password:
-1. Go to your Google Account settings
-2. Navigate to Security > 2-Step Verification > App passwords
-3. Generate a new app password for "Mail"
-4. Use this password (not your regular Gmail password)
+### Step 4: Verify Reports Are Working
 
-**For Custom SMTP Server:**
+**Check Email:**
+- Wait for scheduled report time
+- Check email inbox (and spam folder)
+- Look for email from BPVA Calendar system
+- Open PDF attachment to view report
 
-```env
-SMTP_HOST=smtp.yourdomain.com
-SMTP_PORT=587
-SMTP_USER=your-email@domain.com
-SMTP_PASSWORD=your-password
-```
+**If Reports Don't Arrive:**
+- Verify you're in the recipients list
+- Check spam/junk folder
+- Ensure email address in your profile is correct
+- Contact system administrator
 
-#### Step 3: Verify the .env file
-
-Ensure the `.env` file is NOT committed to git (it's in `.gitignore`):
-
-```bash
-git status  # .env should not appear in the list
-```
-
-### 3. Deploy Cloud Functions
-
-Deploy the new functions to Firebase:
-
-```bash
-cd fcm_listener_function
-npm run deploy
-```
-
-Or deploy just the new function:
-
-```bash
-firebase deploy --only functions:scheduledDailyCheckInReport,functions:sendDailyCheckInReport
-```
-
-### 4. Configure Report Settings in the App
-
-1. Open the BPVA Calendar app as an admin user
-2. Navigate to the menu → **Configuration** → **Automated Reporting**
-3. Configure the following:
-   - **Enable/Disable**: Toggle automated reporting on/off
-   - **Report Types**: Select which reports to enable (currently only Daily Check-In)
-   - **Schedule Time**: Set the time reports should be sent (default: 6:00 AM)
-   - **Timezone**: Select your timezone (default: America/New_York)
-   - **Recipients**: Add users who should receive the reports
-
-4. Click **Save Configuration**
-
-### 5. Firestore Security Rules
-
-Add the following rule to your `firestore.rules` to allow the admin to configure reports:
-
-```javascript
-match /app_settings/automated_reporting {
-  // Admins can read and write automated reporting configuration
-  allow read, write: if request.auth != null && 
-    exists(/databases/$(database)/documents/user_memberships/$(request.auth.uid)) &&
-    get(/databases/$(database)/documents/user_memberships/$(request.auth.uid)).data.membershipType == 'admin';
-}
-```
-
-## Report Content
+## Understanding the Report
 
 The daily check-in report includes:
 
@@ -145,9 +111,92 @@ The report function runs automatically:
 
 ## Testing
 
-### Manual Test (Without Waiting for Schedule)
+## Managing Reports
 
-You can manually trigger the report function for testing:
+**Changing Schedule:**
+1. Go back to Automated Reporting configuration
+2. Adjust time or timezone
+3. Save configuration
+4. New schedule takes effect immediately
+
+**Adding/Removing Recipients:**
+- Changes take effect for the next scheduled report
+- No need to restart or redeploy anything
+- Recipients receive reports until removed from list
+
+**Temporarily Disabling Reports:**
+1. Toggle **"Enable Automated Reports"** to OFF
+2. Save configuration
+3. No reports will be sent
+4. Turn back ON when ready to resume
+
+## Troubleshooting
+
+**Reports Not Being Received:**
+- Check spam/junk email folder
+- Verify recipient email address is correct in user profile
+- Ensure you're in the recipients list
+- Check that automated reporting is enabled
+- Verify scheduled time hasn't passed today
+- Contact system administrator if issue persists
+
+**PDF Won't Open:**
+- Try different PDF reader (Adobe Acrobat, Preview, browser)
+- Download attachment rather than opening in email
+- Check file isn't corrupted (re-send if needed)
+- Ensure device has PDF reader installed
+
+**Empty or Missing Data:**
+- Report covers PREVIOUS day's check-ins, not current day
+- If no check-ins yesterday, report will show zero
+- Check that gym check-in feature is working correctly
+- Verify athletes are actually checking in
+
+**Wrong Timezone:**
+- Update timezone in report configuration
+- Report times will adjust to new timezone
+- Check-in timestamps in report match gym's timezone
+
+## Best Practices
+
+**Recipients:**
+- Include all coaches who need daily attendance info
+- Add facility manager for oversight
+- Include receptionist if they handle attendance
+- Limit to staff who actually need the data
+
+**Schedule:**
+- 6 AM is good for morning review before practice
+- Adjust if you have early morning sessions
+- Consider staff work schedules
+- Keep timezone updated if facility moves
+
+**Using Report Data:**
+- Review daily to spot attendance trends
+- Follow up with athletes who haven't checked in
+- Use stats for membership engagement
+- Archive reports for historical records
+- Compare week-to-week for growth tracking
+
+## Privacy Considerations
+
+**What's Included:**
+- Check-in times and dates
+- Athlete names and emails
+- Distance from gym (to verify location)
+- Aggregate statistics
+
+**What's NOT Included:**
+- Exact athlete GPS locations
+- Personal medical information
+- Payment information
+- Private athlete notes
+
+**Data Security:**
+- Reports sent via secure email
+- PDF files not publicly accessible
+- Only designated recipients receive reports
+- Athlete data handled per privacy policy
 
 ```bash
 # Using Firebase CLI

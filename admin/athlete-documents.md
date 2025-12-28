@@ -1,3 +1,9 @@
+---
+layout: default
+title: Athlete Document Management
+description: Review and approve athlete registration forms and waivers
+---
+
 # Athlete Registration Form & Waiver System
 
 ## Overview
@@ -24,80 +30,72 @@ The BPVA Calendar app now includes a comprehensive document management system fo
 - View linked athlete's document status
 - Read-only access to athlete's uploaded documents
 
-## Architecture
+## Document Types
 
-### Data Model
+Athletes must submit two required documents:
 
-**AthleteDocument** (`lib/models/athlete_document.dart`)
-- Document metadata (type, status, timestamps)
-- File information (URL, name, type, size)
-- Review information (reviewer, notes, review date)
-- Athlete information (userId, email, name)
+**1. Registration Form**
+- BPVA registration form with personal information
+- Emergency contact information
+- Medical information and allergies
+- Parent/guardian information (if under 18)
+- Membership details
 
-**Document Types:**
-- `registrationForm` - BPVA registration form with personal info and emergency contacts
-- `waiver` - Liability waiver acknowledging pole vault training risks
+**2. Liability Waiver**
+- Acknowledgment of pole vault training risks
+- Release of liability for BPVA and coaches
+- Signature (parent signature if under 18)
+- Date of agreement
 
-**Document Status:**
-- `notSubmitted` - Athlete hasn't uploaded yet
-- `pending` - Uploaded and awaiting admin review
-- `approved` - Admin approved the document
-- `rejected` - Admin rejected (requires resubmission with notes explaining why)
+**Accepted File Formats:**
+- PDF (.pdf)
+- JPEG images (.jpg, .jpeg)
+- PNG images (.png)
 
-### Services
+**File Size Limit**: 10 MB per document
 
-**DocumentService** (`lib/services/document_service.dart`)
+## Document Status
 
-Singleton service following the app's standard service pattern with:
-- File upload to Firebase Storage
-- Document metadata management in Firestore
-- Document status tracking
-- Admin review operations (approve/reject)
-- Statistics and reporting
+Each document goes through a review process:
 
-**Key Methods:**
-```dart
-// Athlete operations
-Future<List<AthleteDocument>> getAthleteDocuments(String userId)
-Future<AthleteDocument> submitDocument({...})
-Future<Map<String, bool>> getDocumentCompletionStatus(String userId)
+**Not Submitted** 🔴
+- Athlete has not uploaded the document yet
+- Shows as incomplete in athlete's profile
+- Prevents full access to some features
 
-// Admin operations
-Future<List<AthleteDocument>> getPendingDocuments()
-Future<void> approveDocument({...})
-Future<void> rejectDocument({...})
-Future<Map<String, int>> getDocumentStatistics()
-```
+**Pending Review** 🟡
+- Document uploaded and waiting for admin review
+- Athlete cannot make changes while pending
+- Admin receives notification of new submission
 
-### UI Screens
+**Approved** 🟢
+- Admin has reviewed and approved the document
+- Athlete has full access to app features
+- Document is archived in the system
+- Can be viewed but not changed by athlete
 
-**AthleteDocumentUploadScreen** (`lib/screens/user/athlete_document_upload_screen.dart`)
+**Rejected** 🔴
+- Admin found issues with the document
+- Includes admin notes explaining why
+- Athlete must resubmit corrected document
+- Common reasons: missing signature, illegible, wrong form
 
-Athlete-facing screen for managing documents:
-- Card-based UI showing status of each required document
-- Upload button with file picker (PDF, JPG, PNG)
-- View uploaded documents
-- Resubmit rejected documents
-- Display rejection reasons from admins
+## Admin Features
 
-**AdminDocumentReviewScreen** (`lib/screens/admin/admin_document_review_screen.dart`)
+**Document Review Dashboard**
 
-Admin dashboard for document review:
-- Two tabs: Pending Documents and All Documents
-- Document statistics (pending, approved, rejected counts)
-- Approve/reject actions with notes
-- View athlete information and document details
-- Filter and sort capabilities
+Access via: Admin Dashboard → Athlete Documents
 
-**AthleteMyProfileScreen** (enhanced)
+**Two Tabs:**
+- **Pending**: Documents awaiting your review (shows count badge)
+- **All Documents**: View all documents by status filter
 
-Added "Required Documents" section showing:
-- Registration form status with checkmark/warning icon
-- Waiver status with checkmark/warning icon
-- Overall completion indicator
-- "Manage Documents" button to upload screen
-
-## Firebase Configuration
+**Review Actions:**
+- View uploaded document (opens in new window)
+- See athlete information
+- Approve document
+- Reject document with feedback notes
+- View document history and timestamps
 
 ### Firestore Collections
 

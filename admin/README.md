@@ -1,3 +1,9 @@
+---
+layout: default
+title: Admin Documentation
+description: Administrator Guide for BPVA Calendar Application
+---
+
 # Admin Documentation
 
 Welcome to the BPVA Calendar Administrator Guide. This documentation provides comprehensive guidance for all administrative features in the BPVA Calendar application.
