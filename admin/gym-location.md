@@ -31,8 +31,9 @@ The gym check-in feature allows regular users (non-admin) to check into the gym 
 **Configuring Gym Location:**
 
 1. **Access Gym Location Settings**
-   - Navigate to Admin Dashboard
-   - Tap "Gym Location Settings"
+   - Open Admin Dashboard (hamburger menu in top-left)
+   - Tap **Configuration** expansion tile
+   - Tap **"Gym Location"** option
    - View current gym coordinates and check-in radius
 
 2. **Update Gym Coordinates**

@@ -84,7 +84,7 @@ Each document goes through a review process:
 
 **Document Review Dashboard**
 
-Access via: Admin Dashboard → Athlete Documents
+Access via: Admin Dashboard (hamburger menu) → User Management → Document Review
 
 **Two Tabs:**
 - **Pending**: Documents awaiting your review (shows count badge)
@@ -204,8 +204,9 @@ match /athlete_documents/{userId}/{fileName} {
 ### Admin Workflow
 
 1. **Access Review Screen**
-   - Navigate to Admin Dashboard
-   - Select "Document Review" option
+   - Open Admin Dashboard (hamburger menu)
+   - Tap **User Management** expansion tile
+   - Tap **"Document Review"** option
    - See pending documents count in tab badge
 
 2. **Review Pending Document**

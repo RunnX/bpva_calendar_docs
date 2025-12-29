@@ -71,33 +71,29 @@ The User Management system provides comprehensive tools for administrators to ma
 ### Role Management
 
 **Assign Roles**
-1. Navigate to **Admin Dashboard → User Management**
-2. Find the user in the list
-3. Tap on the user to view details
-4. Select new role from dropdown
-5. Confirm role change
-6. User's permissions update immediately
+1. Navigate to **Admin Dashboard** (open hamburger menu in top-left)
+2. Tap **User Management** expansion tile
+3. Tap **Manage Users** option
+4. Find the user in the list (use search if needed)
+5. Tap on the user to open the options menu
+6. Tap **"Change Membership Type"**
+7. Select new membership type from the list
+8. Confirm the change
+9. User's permissions and role update immediately
 
 **Role Restrictions**
 - Cannot remove the last admin (system protection)
-- Cannot change your own role to prevent lockout
 - Role changes are logged in admin actions
-- Users notified of role changes via push notification
-
-**Bulk Role Operations**
-- Select multiple users
-- Assign role to all selected
-- Useful for new athlete groups
-- Transaction-based for consistency
+- Users can be notified of role changes via push notification
 
 ### Membership Management
 
 **Membership Expiration**
-- Set expiration date for each user
-- Automatic expiration notifications
-- Grace period configuration (default: 7 days)
+- Set expiration date for each athlete
+- Automatic expiration checking for monthly/yearly members
+- Drop-in members use per-session payment (no expiration)
 - Expired users marked with warning indicator
-- Reactivation workflow
+- Visual status badges (Active, Expiring Soon, Expired)
 
 **Membership Status**
 - Active: Current paid member
@@ -106,10 +102,10 @@ The User Management system provides comprehensive tools for administrators to ma
 - Inactive: Account disabled
 
 **Setting Expiration Dates**
-1. Open user details
-2. Tap **"Set Membership Expiration"**
-3. Select date from calendar picker
-4. Optionally add notes
+1. In User Management, tap on an athlete
+2. Tap **"Set Expiration Date"** (for monthly/yearly members)
+3. OR tap **"Mark as Paid for Today"** (for drop-in members)
+4. Select date from calendar picker (if setting expiration)
 5. Save changes
 
 ### Family Linking (Parent-Athlete)
@@ -167,12 +163,13 @@ The User Management system provides comprehensive tools for administrators to ma
 - Last login dates
 
 **Add Admins**
-1. Navigate to **Admin Dashboard → Admin List**
-2. Tap **"Add Admin"**
-3. Enter email address of user
-4. User must already be registered in app
-5. Confirm addition
-6. User role automatically updated to Admin
+1. Navigate to **Admin Dashboard** (hamburger menu)
+2. Tap **User Management** → **Manage Users**
+3. Find the user you want to make an admin
+4. Tap on the user, then **"Change Membership Type"**
+5. Select **"Admin"** from the membership types
+6. Confirm the change
+7. User's role automatically updated to Admin
 
 **Remove Admins**
 1. View admin list

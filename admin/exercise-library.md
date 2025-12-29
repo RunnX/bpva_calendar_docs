@@ -60,8 +60,9 @@ Each exercise in the library includes:
 ### Creating Exercises
 
 1. **Access Exercise Library**
-   - Navigate to Admin Dashboard
-   - Tap "Exercise Library"
+   - Open Admin Dashboard (hamburger menu in top-left)
+   - Tap **Workout Management** expansion tile
+   - Tap **"Exercises"** option
    - View existing exercises
 
 2. **Add New Exercise**

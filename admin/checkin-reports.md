@@ -42,14 +42,16 @@ The gym check-in reporting system provides detailed attendance analytics and his
 ### Accessing Reports
 
 **From Admin Dashboard:**
-1. Navigate to **Admin Dashboard**
-2. Tap **"Gym Check-In Statistics"** or **"Check-In Reports"**
-3. View current statistics and analytics
+1. Open Admin Dashboard (hamburger menu in top-left)
+2. Statistics are visible on the main dashboard screen
+3. For detailed reports, go to User Management → Manage Users
+4. View check-in statistics section
 
 **From User Management:**
-1. Navigate to **Admin Dashboard** → **User Management**
-2. Find **"Gym Check-In Statistics"** section
-3. View reports and archive options
+1. Open Admin Dashboard (hamburger menu)
+2. Tap **User Management** → **Manage Users**
+3. Scroll to **"Gym Check-In Statistics"** section
+4. View reports and archive options
 
 ### Statistics Available
 

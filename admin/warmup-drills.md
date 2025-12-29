@@ -109,8 +109,9 @@ Each action level includes comprehensive video content:
 ### Warmup Sequence Builder
 
 1. **Access Warmup Management**
-   - Navigate to Admin Dashboard
-   - Tap "Warmup Drills"
+   - Open Admin Dashboard (hamburger menu in top-left)
+   - Tap **Workout Management** expansion tile
+   - Tap **"Warmup Drills"** option
    - View existing sequences or create new
 
 2. **Sequence Information**

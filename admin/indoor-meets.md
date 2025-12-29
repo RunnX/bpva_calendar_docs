@@ -155,8 +155,9 @@ The Indoor Meet Management system allows administrators to create, manage, and t
 ### Creating a New Meet
 
 1. **Access Meet Management**
-   - Navigate to Admin Dashboard
-   - Tap "Indoor Meets"
+   - Open Admin Dashboard (hamburger menu in top-left)
+   - Tap **Membership & Meets** expansion tile
+   - Tap **"Indoor Meet Registrations"** option
    - Tap "Create New Meet" button
 
 2. **Enter Meet Details**

@@ -39,7 +39,7 @@ The Pole Inventory Management System is a comprehensive feature for tracking pol
 
 ### 4. Role-Based Access
 
-- **Navigation**: Access via "Pole Inventory" menu item in admin dashboard, athlete menu, or parent menu
+- **Navigation**: Access via Admin Dashboard (hamburger menu) → Membership & Meets → "Pole Inventory", or from athlete/parent menus
 - **Admin & BPVA Coach Access**: Full inventory management including add, edit, delete, checkout, and checkin
 - **Athlete Access**: View available poles and their own current rentals
 - **Parent Access**: View poles rented by their linked athletes

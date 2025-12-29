@@ -27,8 +27,9 @@ The Automated Daily Check-In Report feature sends professional email reports wit
 ### Step 1: Access Report Configuration
 
 1. Open BPVA Calendar app as an admin
-2. Navigate to the menu → **Admin Dashboard**
-3. Tap **"Automated Reporting"** or **"Configuration"** → **"Automated Reporting"**
+2. Open **Admin Dashboard** (hamburger menu in top-left)
+3. Tap **Configuration** expansion tile
+4. Tap **"Automated Reporting"** option
 
 ### Step 2: Configure Report Settings
 

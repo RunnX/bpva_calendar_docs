@@ -33,10 +33,11 @@ The Calendar Management system allows administrators to configure which Google C
 
 ### Setting Up Public Calendar (First Time)
 
-1. **Access Calendar Settings**
+1. **Access Calendar Management**
    - Open the BPVA Calendar app as an admin
-   - Navigate to Admin Dashboard
-   - Tap **"Calendar Settings"** button
+   - Navigate to Admin Dashboard (hamburger menu in top-left)
+   - Tap **Configuration** expansion tile
+   - Tap **"Manage Calendars"** option
 
 2. **Authenticate with Google**
    - On first access, you'll be prompted to sign in with Google
@@ -44,13 +45,13 @@ The Calendar Management system allows administrators to configure which Google C
    - This is a one-time setup per device
 
 3. **Select Public Calendar**
-   - View the list of calendars from your Google account
+   - View the list of public calendars from your Google account
    - Find the calendar you want to make public (e.g., "BPVA Practice Schedule")
-   - Tap the **"Make Public"** button next to that calendar
-   - Confirm the selection
+   - Tap the **"Public"** icon (globe icon) next to that calendar
+   - Confirm the selection by tapping **"Save"** at the bottom
 
 4. **Verify Configuration**
-   - The selected calendar will show a green "Public Calendar" badge
+   - The selected calendar will show as "Public Calendar (Available to everyone)" in green text
    - All app users can now view events from this calendar
    - Events sync in real-time
 
@@ -64,48 +65,51 @@ External calendars allow you to display events from calendars owned by other Goo
    - Calendar must be set to "Public" or shared with your admin Google account
 
 2. **Add External Calendar**
-   - In Calendar Settings, tap **"Add External Calendar"**
-   - Enter the calendar email address
-   - Tap **"Add"**
-   - The calendar will appear in the external calendars list
+   - In **Manage Calendars** screen, scroll to "External Calendars" card
+   - Tap **"Add External Public Calendar"** button
+   - Enter the calendar email address in the text field
+   - Tap **"Add Calendar"** button
+   - The calendar will be validated and added if accessible
 
 3. **Verify Sharing**
-   - Tap **"Check Sharing"** next to the external calendar
-   - If properly shared, you'll see a success message
+   - Tap **"Check Public Calendar Sharing"** button at the top of the screen
+   - If properly shared, you'll see sharing status details
    - If not shared, you'll receive instructions to fix permissions
 
 4. **Troubleshooting External Calendars**
-   - If events don't appear, verify the calendar is actually shared
-   - Check that the email address is correct
+   - If "Error accessing calendar" message appears, verify the calendar is actually shared
+   - Check that the email address is exactly correct (including @group.calendar.google.com suffix)
    - Ensure the external calendar owner has set proper sharing permissions
    - Remove and re-add the calendar if issues persist
 
 ### Changing the Public Calendar
 
-1. Navigate to **Calendar Settings**
+1. Navigate to **Manage Calendars** (Admin Dashboard → Configuration → Manage Calendars)
 2. Find the new calendar you want to make public
-3. Tap **"Make Public"** on the new calendar
-4. The previous public calendar automatically becomes private
-5. All users see events from the new public calendar immediately
+3. Tap the **globe icon** (public icon) on the new calendar
+4. Tap **"Save"** button at the bottom
+5. The previous public calendar automatically becomes private
+6. All users see events from the new public calendar immediately
 
 ### Removing External Calendars
 
-1. In Calendar Settings, find the external calendar
-2. Tap the **"Remove"** button
-3. Confirm deletion
-4. The calendar no longer appears for any users
+1. In **Manage Calendars**, scroll to the "External Calendars" card
+2. Find the external calendar you want to remove in the list
+3. Tap the **delete/remove icon** next to the calendar
+4. Confirm deletion
+5. The calendar no longer appears for any users
 
 ## Calendar Data Flow
 
 ### Public Calendar
 ```
-Admin Selects Calendar → Stored in Firestore (admin_settings) → 
+Admin Selects Calendar → Stored in Firestore (app_settings/public_calendar) → 
 All Users Query Firestore → App Fetches Events → Display in Calendar View
 ```
 
 ### External Calendars
 ```
-Admin Adds Calendar Email → Stored in Firestore (admin_settings/external_calendars) →
+Admin Adds Calendar Email → Stored in Firestore (admin_settings/{email}/external_calendars) →
 All Users Query External Calendars → App Fetches Events → Merge with Public Events → Display
 ```
 
@@ -118,17 +122,24 @@ All Users Query External Calendars → App Fetches Events → Merge with Public 
 {
   "selectedCalendarId": "primary",
   "selectedCalendarName": "BPVA Practice Schedule",
-  "lastUpdated": "2024-01-15T10:30:00Z"
+  "lastUpdated": "2024-01-15T10:30:00Z",
+  "external_calendars": {
+    "calendarId": {
+      "calendarEmail": "meets@example.com",
+      "calendarName": "Regional Meets",
+      "addedAt": "2024-01-15T11:00:00Z",
+      "isShared": true
+    }
+  }
 }
 ```
 
-**External Calendars** (`admin_settings/{adminEmail}/external_calendars/{calendarId}`)
+**Public Calendar Configuration** (`app_settings/public_calendar`)
 ```json
 {
-  "calendarEmail": "meets@example.com",
-  "calendarName": "Regional Meets",
-  "addedAt": "2024-01-15T11:00:00Z",
-  "isShared": true
+  "publicCalendarId": "primary",
+  "publicCalendarName": "BPVA Practice Schedule",
+  "lastUpdated": "2024-01-15T10:30:00Z"
 }
 ```
 
