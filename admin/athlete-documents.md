@@ -364,9 +364,6 @@ test/integration/document_review_test.dart
    # Test on dev environment
    ./run.sh dev
    
-   # Build for staging
-   ./build.sh staging
-   
    # Build for production
    ./build.sh prod
    ```
