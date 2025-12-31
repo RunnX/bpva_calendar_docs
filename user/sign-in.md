@@ -8,11 +8,12 @@ description: Authenticate with Google to access full app features
 
 ## Overview
 
-The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in with your Google account to access all app features including messages, gym check-in, practice journal, document submission, and personalized calendars. Guest mode is available for viewing public calendars only.
+The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in with your Google account to access all app features including messages, gym check-in, practice journal, document submission, and personalized calendars.
 
 ## Features
 
 ### Google Sign-In
+
 - **Secure Authentication**: Industry-standard OAuth2 protocol
 - **No Password Management**: Use existing Google account
 - **Quick Sign-In**: One-tap authentication
@@ -20,16 +21,11 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 - **Safe**: No password shared with BPVA app
 
 ### Account Access
+
 - **Full Features**: All app features when signed in
 - **Personalized**: See your profile, messages, configurations
 - **Synced Data**: Access your data across devices
 - **Role-Based**: Features based on your role (athlete, parent, admin)
-
-### Guest Mode
-- **Calendar Only**: View public practice/competition calendars
-- **No Sign-In**: Use without Google account
-- **Limited Access**: Cannot use personalized features
-- **Try Before Commit**: Explore calendar before signing in
 
 ## How to Use
 
@@ -90,32 +86,6 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
    - Tap account to confirm
    - Sign-in completes automatically
 
-### Using Guest Mode
-
-1. **Access Guest Mode**
-   - From sign-in screen
-   - Tap **"Continue as Guest"** button
-   - No account required
-
-2. **Guest Features**
-   - **Available**:
-     - View public calendars
-     - See practice schedule
-     - View competition dates
-   - **Not Available**:
-     - Messages
-     - Gym check-in
-     - Practice journal
-     - Document submission
-     - Profile management
-     - Runway configurations
-
-3. **Signing In From Guest**
-   - Tap hamburger menu (☰)
-   - Select **"Sign In"**
-   - Follow normal sign-in process
-   - Gain access to all features
-
 ### Signing Out
 
 1. **Open Menu**
@@ -155,8 +125,9 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ## Understanding Authentication
 
 ### Google OAuth2
+
 - **What It Is**: Secure authentication protocol
-- **How It Works**: 
+- **How It Works**:
   1. App requests permission from Google
   2. You approve access
   3. Google provides secure token
@@ -165,6 +136,7 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 - **Standard**: Used by millions of apps worldwide
 
 ### Your Google Account
+
 - **Which Account**: Use account designated by BPVA
   - May be personal Google account
   - May be school-provided account
@@ -177,11 +149,13 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### Permissions Explained
 
 **What App Requests:**
+
 - **Profile Information**: Name for personalization
 - **Email Address**: Account identification, communication
 - **Calendar Access** (if granted): For calendar integration
 
 **What App Does NOT Access:**
+
 - Gmail messages
 - Google Drive files (unless you explicitly share)
 - Contacts
@@ -193,6 +167,7 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### Signed In - Full Access
 
 **Available Features:**
+
 - ✅ View all calendars (public and personal)
 - ✅ Receive messages and announcements
 - ✅ Gym check-in with location verification
@@ -204,6 +179,7 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 - ✅ Role-specific features (athlete/parent/admin)
 
 **Data Syncing:**
+
 - All data syncs across devices
 - Changes saved to cloud
 - Access anywhere, anytime
@@ -212,11 +188,13 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### Guest Mode - Limited Access
 
 **Available Features:**
+
 - ✅ View public calendars only
 - ✅ See practice schedule
 - ✅ View competition dates
 
 **Not Available:**
+
 - ❌ Messages and announcements
 - ❌ Gym check-in
 - ❌ Practice journal
@@ -226,6 +204,7 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 - ❌ Personalized features
 
 **Limitations:**
+
 - No data saving
 - No personalization
 - Calendar-only view
@@ -236,18 +215,21 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### Can't Sign In
 
 **Google Account Issues:**
+
 - Verify account email and password
 - Try signing into Gmail directly
 - Check if account is active
 - Ensure account not suspended
 
 **Permission Errors:**
+
 - Tap "Sign In" again
 - Select "Allow" for all permissions
 - Check browser popup blockers (web version)
 - Try different Google account
 
 **App Issues:**
+
 - Update app to latest version
 - Clear app cache:
   - **iOS**: Delete and reinstall app
@@ -258,12 +240,14 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### Sign-In Loops
 
 **Continuous Redirect:**
+
 - Sign out completely
 - Close app
 - Reopen and sign in again
 - Try different account
 
 **Browser Issues** (Web):
+
 - Clear browser cookies
 - Try incognito/private mode
 - Use different browser
@@ -272,12 +256,14 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### Wrong Account Signed In
 
 **Switch Accounts:**
+
 1. Sign out of current account
 2. Sign in with correct account
 3. Verify account email shown
 4. Check role/features available
 
 **Multiple Accounts:**
+
 - Each Google account creates separate app profile
 - Data doesn't transfer between accounts
 - Use same account consistently
@@ -286,18 +272,21 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### Features Not Available After Sign-In
 
 **Verify Role:**
+
 - Check with admin about your role
 - Athlete vs. Parent vs. User
 - Features vary by role
 - May need role update
 
 **Account Status:**
+
 - Account may need activation
 - Contact admin to verify account
 - May need registration completion
 - Check profile is complete
 
 **App Issues:**
+
 - Sign out and back in
 - Update app
 - Clear cache
@@ -306,11 +295,13 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### Sign Out Not Working
 
 **Force Sign Out:**
+
 - Clear app data (Android)
 - Delete and reinstall app (iOS)
 - Sign in with correct account
 
 **Stuck Signed In:**
+
 - Usually not an issue
 - Sign out from menu
 - Contact admin if account needs reset
@@ -320,18 +311,21 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### Account Management
 
 **Choose Right Account:**
+
 - Use account designated by BPVA
 - Consistent account usage
 - Don't switch accounts frequently
 - Note which account has your data
 
 **Keep Account Secure:**
+
 - Use strong password for Google account
 - Enable 2-factor authentication on Google
 - Don't share account credentials
 - Sign out on shared devices
 
 **Stay Signed In:**
+
 - Generally safe on personal device
 - Convenient for regular use
 - Ensures you receive notifications
@@ -340,17 +334,20 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### When to Sign Out
 
 **Shared Devices:**
+
 - Always sign out on shared devices
 - Protects your privacy
 - Prevents others accessing your data
 - Sign in on personal device instead
 
 **Account Issues:**
+
 - Sign out/in to refresh authentication
 - Fixes some sync issues
 - Resets app state
 
 **Switching Users:**
+
 - Sign out before different person uses device
 - Each person uses own account
 - Keeps data separate and private
@@ -358,12 +355,14 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### Privacy & Security
 
 **Protect Your Account:**
+
 - Never share Google password
 - Don't let others sign in as you
 - Monitor account activity
 - Report suspicious sign-ins to Google
 
 **App Permissions:**
+
 - Only grant necessary permissions
 - Review what app can access
 - Revoke permissions in Google account settings if needed
@@ -373,6 +372,7 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ### Understanding Roles
 
 **Athlete:**
+
 - Full access to athlete features
 - Gym check-in available
 - Runway configurations
@@ -381,6 +381,7 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 - Profile with emergency contact
 
 **Parent:**
+
 - View linked athlete information
 - See athlete calendars
 - Messages and announcements
@@ -388,6 +389,7 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 - Limited admin visibility
 
 **Admin (Coaches/Staff):**
+
 - All user features plus
 - User management
 - Calendar administration
@@ -396,12 +398,14 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 - Analytics and reports
 
 **Regular User:**
+
 - Calendar viewing
 - Messages
 - Basic profile
 - No athlete-specific features
 
 ### Role Assignment
+
 - Roles assigned by admins
 - Based on registration
 - Contact admin to update role
@@ -410,24 +414,28 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 ## Privacy & Data
 
 ### What We Store
+
 - **Profile**: Name, email, birth date, emergency contact
 - **Activity**: Gym check-ins, journal entries, documents
 - **Configuration**: Runway steps, preferences
 - **Messages**: Read/dismissed status
 
 ### What We Don't Store
+
 - Google account password
 - Gmail content
 - Google Drive files
 - Unnecessary personal data
 
 ### Data Protection
+
 - Secure Firebase storage
 - Encrypted transmission
 - Access controls
 - Regular security updates
 
 ### Account Deletion
+
 - Contact admin to delete account
 - Data removed per policy
 - Cannot be undone
@@ -456,7 +464,9 @@ A: Guest mode allows calendar viewing only. Sign in required for all other featu
 A: Try your main Google account first. Contact admin if you can't remember.
 
 ### Contact Support
+
 If you have issues:
+
 1. Verify Google account is active
 2. Check internet connection
 3. Try signing in with different account
@@ -467,6 +477,15 @@ If you have issues:
 ---
 
 **Related Documentation:**
+
 - [My Profile](profile.md)
 - [Messages & Announcements](messages.md)
 - [Gym Check-In](gym-checkin.md)
+
+**Related a free Gmail account at gmail.com to get started.
+
+**Q: Is my data safe?**
+A: Yes. Industry-standard OAuth2, encrypted storage, secure Firebase backend.
+
+**Q: Can I use app without signing in?**
+A: No, you must sign in with a Google account to use the app and access
