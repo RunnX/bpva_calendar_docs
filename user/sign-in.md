@@ -100,7 +100,7 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 
 3. **After Sign Out**
    - Local data cleared
-   - Returned to sign-in screen or guest view
+   - Returned to sign-in screen
    - Can sign back in anytime
    - Cloud data preserved (messages, journal, etc.)
 
@@ -184,31 +184,6 @@ The BPVA Calendar app uses Google Sign-In for secure authentication. Sign in wit
 - Changes saved to cloud
 - Access anywhere, anytime
 - Backup and recovery available
-
-### Guest Mode - Limited Access
-
-**Available Features:**
-
-- ✅ View public calendars only
-- ✅ See practice schedule
-- ✅ View competition dates
-
-**Not Available:**
-
-- ❌ Messages and announcements
-- ❌ Gym check-in
-- ❌ Practice journal
-- ❌ Document submission
-- ❌ Runway configurations
-- ❌ Profile management
-- ❌ Personalized features
-
-**Limitations:**
-
-- No data saving
-- No personalization
-- Calendar-only view
-- Cannot track attendance or progress
 
 ## Troubleshooting
 
@@ -452,13 +427,13 @@ A: Use the account designated by BPVA (check with coaches). Usually personal or 
 A: Each account is separate. Use one account consistently for your BPVA data.
 
 **Q: What if I don't have a Google account?**
-A: Create free Gmail account at gmail.com, or use guest mode for calendar-only access.
+A: Create free Gmail account at gmail.com.
 
 **Q: Is my data safe?**
 A: Yes. Industry-standard OAuth2, encrypted storage, secure Firebase backend.
 
 **Q: Can I use app without signing in?**
-A: Guest mode allows calendar viewing only. Sign in required for all other features.
+A: Sign in required for all features.
 
 **Q: What if I forget which account I used?**
 A: Try your main Google account first. Contact admin if you can't remember.
