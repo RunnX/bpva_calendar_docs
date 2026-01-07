@@ -3,14 +3,14 @@
   "target": {
     "namespace": "android_app",
     "package_name": "com.runnx.bpva",
-    "sha256_cert_fingerprints": ["4B77F08A2A3EA443B0676EA1A8C086719D1C7330BFACC64A81C2D21521169D278"]
+    "sha256_cert_fingerprints": ["4B:77:F0:8A:2A:3E:A4:43:B0:67:6E:A1:A8:C0:86:71:9D:1C:73:30:BF:AC:C6:4A:81:C2:D2:15:21:69:D2:78"]
   }
 },
-  {
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.runnx.bpva.dev",
-      "sha256_cert_fingerprints": ["877EA0017352B82DC9F73DDDD3D3D468CB6249E5AF5D1AC713F91B43510775D2"]
-    }
-  }]
+{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.runnx.bpva.dev",
+    "sha256_cert_fingerprints": ["87:7E:A0:01:73:52:B8:2D:C9:F7:3D:DD:D3:D3:D4:68:CB:62:49:E5:AF:5D:1A:C7:13:F9:1B:43:51:07:75:D2"]
+  }
+}]
