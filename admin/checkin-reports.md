@@ -21,18 +21,21 @@ The gym check-in reporting system provides detailed attendance analytics and his
 
 **Two Types of Data Storage:**
 
-1. **Recent Check-Ins** (Last 30-90 days)
-   - Detailed individual check-in records
+1. **Recent Check-Ins** (Visible to Athletes)
+   - Each athlete can see their last 8 check-ins on their check-in screen
+   - Additionally, all check-ins from the last 60 days are kept as detailed records
    - Used for recent activity and athlete tracking
    - Faster queries for current statistics
 
-2. **Archived Summaries** (Older than 90 days)
+2. **Archived Summaries** (Older than 60 days AND beyond user's 8 most recent)
    - Daily summary records for historical periods
    - Preserves statistics without storing every individual check-in
    - Saves storage space while keeping historical data
    - Combined with recent data for complete totals
+   - **Important**: Each user always keeps their 8 most recent check-ins visible, even if older than the archive cutoff
 
 **Example:**
+- **Athlete View**: Last 8 check-ins always visible (could span months if infrequent)
 - **Recent**: Individual check-ins from last 60 days (detailed records)
 - **Archived**: Daily totals from months/years ago (summary only)
 - **Dashboard**: Combines both for accurate statistics
@@ -125,26 +128,33 @@ If deleting after archive:
 ### Archive Frequency
 
 **Recommended schedule:**
-- **Monthly**: Archive check-ins older than 30 days
-- **Quarterly**: Archive check-ins older than 90 days
+- **Every 60 Days**: Archive check-ins older than 60 days (recommended)
 - **As needed**: If dashboard performance degrades
+
+**Important**: Regardless of the archive cutoff date, each user will always retain their 8 most recent check-ins. This ensures athletes can always see their recent check-in history on their check-in screen.
 
 ### Cutoff Date Selection
 
 **Safe approach:**
-1. Keep last 30 days as individual records (for detailed queries)
+1. Keep last 60 days as individual records (for detailed queries)
 2. Archive everything older into aggregates
 3. Delete old individual records to save storage
+4. **Automatic preservation**: System keeps each user's 8 most recent check-ins regardless of date
 
 **Example workflow:**
 ```dart
-// Archive everything before 30 days ago
-final cutoffDate = DateTime.now().subtract(Duration(days: 30));
+// Archive everything before 60 days ago
+final cutoffDate = DateTime.now().subtract(Duration(days: 60));
 await LocationService.archiveGymCheckIns(
   cutoffDate: cutoffDate,
-  deleteAfterArchive: true,  // Save storage
+  deleteAfterArchive: true,  // Save storage, but auto-preserves 8/user
 );
 ```
+
+**What gets preserved when deleting:**
+- All check-ins from the last 60 days (based on cutoff date)
+- PLUS each user's 8 most recent check-ins (even if older than cutoff)
+- This ensures athletes always see their last 8 check-ins on the check-in screen
 
 ### When NOT to Delete
 
