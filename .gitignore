@@ -21,3 +21,7 @@ vendor/
 # Temporary files
 /tmp/
 .DS_Store
+
+# Internal store-listing working drafts (kept local, not published)
+releasenotes/STORE_LISTING_*.md
+releasenotes/listing-current-*.md
